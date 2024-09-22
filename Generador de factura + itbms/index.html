@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura de Compra</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Generar Factura de Compras de artículos de Computadora</h2>
+        <form action="factura.php" method="POST">
+            <table class="table table-bordered" id="tabla-articulos">
+                <thead>
+                    <tr>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="articulo[]" class="form-control" placeholder="Artículo 1"></td>
+                        <td><input type="number" name="cantidad[]" class="form-control" placeholder="Cantidad"></td>
+                        <td><input type="number" name="precio[]" step="0.01" class="form-control" placeholder="Precio Unitario"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="articulo[]" class="form-control" placeholder="Artículo 2"></td>
+                        <td><input type="number" name="cantidad[]" class="form-control" placeholder="Cantidad"></td>
+                        <td><input type="number" name="precio[]" step="0.01" class="form-control" placeholder="Precio Unitario"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="articulo[]" class="form-control" placeholder="Artículo 3"></td>
+                        <td><input type="number" name="cantidad[]" class="form-control" placeholder="Cantidad"></td>
+                        <td><input type="number" name="precio[]" step="0.01" class="form-control" placeholder="Precio Unitario"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center mb-4">
+                <button type="button" class="btn btn-success" onclick="agregarFila()">Agregar más artículos</button>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Generar Factura</button>
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+</html>
