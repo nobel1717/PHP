@@ -3,13 +3,19 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2024 a las 16:29:28
+-- Tiempo de generación: 20-11-2024 a las 05:29:33
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `bdnautico`
@@ -29,6 +35,15 @@ CREATE TABLE `barco` (
   `cuota` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `barco`
+--
+
+INSERT INTO `barco` (`matricula`, `cedsocio`, `nombre_barco`, `num_amarre`, `cuota`) VALUES
+('B01', '123456', 'La Maravilla', 1, 150.00),
+('B02', '789012', 'El Viajero', 2, 200.00),
+('B03', '345678', 'Oceánico', 3, 250.00);
+
 -- --------------------------------------------------------
 
 --
@@ -47,8 +62,10 @@ CREATE TABLE `conductor_patron` (
 --
 
 INSERT INTO `conductor_patron` (`codigo`, `nombre`, `telefono`, `direccion`) VALUES
-('455', 'Fernando', '2334-2332', 'Barrio Balboa\r\nLa Tulihueca'),
-('800', 'Raul', '6765-4564', 'Panama Costa del este');
+('1', 'Luis Martínez', '555-3333', 'Calle Falsa 123'),
+('2', 'María Torres', '555-4444', 'Avenida Siempreviva 742'),
+('3', 'Pedro Sánchez', '555-5555', 'Boulevard Central 567'),
+('5', 'Fernando', '2334-2332', 'Panama Costa del este');
 
 -- --------------------------------------------------------
 
@@ -62,6 +79,15 @@ CREATE TABLE `socio` (
   `telefono` varchar(20) DEFAULT NULL,
   `correo` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `socio`
+--
+
+INSERT INTO `socio` (`cedula`, `nombre_completo`, `telefono`, `correo`) VALUES
+('123456', 'Juan Pérez', '555-1234', 'juan.perez@example.com'),
+('345678', 'Carlos Ruiz', '555-9012', 'carlos.ruiz@example.com'),
+('789012', 'Ana Gómez', '555-5678', 'ana.gomez@example.com');
 
 -- --------------------------------------------------------
 
@@ -83,7 +109,10 @@ CREATE TABLE `viaje` (
 --
 
 INSERT INTO `viaje` (`numero`, `matribarco`, `codpatron`, `fecha`, `hora`, `destino`) VALUES
-(3, '1717', '800', '2024-11-14', '12:46:00', 'Bocas Del Toro');
+(1, 'B01', '1', '2024-11-20', '10:00:00', 'Isla del Sol'),
+(2, 'B02', '2', '2024-11-21', '11:00:00', 'Bahía Azul'),
+(3, 'B03', '3', '2024-11-22', '12:00:00', 'Cabo Dorado'),
+(4, 'B02', '2', '2024-11-13', '14:30:00', 'Darien');
 
 --
 -- Índices para tablas volcadas
@@ -124,7 +153,7 @@ ALTER TABLE `viaje`
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
